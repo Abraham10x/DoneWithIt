@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -9,6 +10,7 @@ import {
   Alert,
   Platform,
   StatusBar,
+  Switch,
 } from "react-native";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -19,10 +21,22 @@ import {
 } from "@react-native-community/hooks";
 import AppText from "../components/AppText";
 import Card from "../components/Card";
+import { TextInput } from "react-native";
+import AppTextInput from "../components/AppTextInput";
+import AppPicker from "../components/AppPicker";
 
 export default function Lessons() {
+  const [firstname, setFirstname] = useState("");
   const orientation = useDeviceOrientation();
+  const [isNew, setIsNew] = useState(true);
   console.log(useDimensions);
+
+  const categories = [
+    { label: "Furniture", value: 1 },
+    { label: "Clothing", value: 2 },
+    { label: "Cameras", value: 3 },
+  ];
+  const [selectItem, setSelectedItem] = useState(categories[0]);
   return (
     <SafeAreaView style={styles.container}>
       {/* <Text numberOfLines={1} onPress={() => console.log("hello")}>
@@ -135,6 +149,29 @@ export default function Lessons() {
         subTitle="$100"
         image={require("../assets/jacket.jpg")}
       />
+      <TextInput
+        keyboardType="default"
+        maxLength={10}
+        secureTextEntry
+        onChangeText={(text) => setFirstname(text)}
+        placeholder="First name"
+        style={{
+          borderBottomColor: "#ccc",
+          borderBottomWidth: 1,
+          marginVertical: 20,
+          paddingVertical: 10,
+        }}
+      />
+      <AppTextInput icon="email" placeholder="Username" />
+      <Switch value={isNew} onValueChange={(newValue) => setIsNew(newValue)} />
+      <AppPicker
+        selectItem={selectItem}
+        onSelect={(item) => setSelectedItem(item)}
+        items={categories}
+        icon="apps"
+        placeholder="Category"
+      />
+      <AppTextInput icon="email" placeholder="Email" />
     </SafeAreaView>
   );
 }

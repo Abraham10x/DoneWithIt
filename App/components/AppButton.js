@@ -8,7 +8,7 @@ function AppButton(props) {
 
 const styles = StyleSheet.create({
   button: {
-    color: "#ffffff",
+    color: colors.white,
     width: "100%",
     height: "100%",
     fontSize: 18,

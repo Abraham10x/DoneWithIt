@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { FlatList, SafeAreaView, StyleSheet, View } from "react-native";
-import Constants from "expo-constants";
+import { FlatList } from "react-native";
 import ListItem from "../components/ListItem";
 import ListItemSeparator from "../components/ListItemSeparator";
-import { Swipeable } from "react-native-gesture-handler";
+
 import ListItemDeleteAction from "../components/ListItemDeleteAction";
+import Screen from "../components/Screen";
 
 const initialValues = [
   {
@@ -29,7 +29,7 @@ function MessagesScreen() {
     setMessages(messages.filer((m) => m.id !== messages.id));
   };
   return (
-    <SafeAreaView style={styles.container}>
+    <Screen>
       <FlatList
         data={messages}
         keyExtractor={(messages) => messages.id.toString()}
@@ -39,31 +39,26 @@ function MessagesScreen() {
             title={item.title}
             subTitle={item.subTitle}
             onPress={() => console.log("Displayed Message", item)}
+            renderRightActions={() => {
+              <ListItemDeleteAction onPress={() => handleDelete(messages)} />;
+            }}
           />
         )}
         ItemSeparatorComponent={ListItemSeparator}
-        renderRightActions={() => (
-          <ListItemDeleteAction onPress={handleDelete(messages)} />
-        )}
         refreshing={refreshing}
-        onRefresh={setRefreshing([
-          {
-            id: 2,
-            title: "Isreal",
-            subTitle: "Who are you?",
-            image: require("../assets/mosh.jpg"),
-          },
-        ])}
+        onRefresh={() => {
+          setMessages([
+            {
+              id: 2,
+              title: "Isreal",
+              subTitle: "Who are you?",
+              image: require("../assets/mosh.jpg"),
+            },
+          ]);
+        }}
       />
-    </SafeAreaView>
+    </Screen>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "white",
-    paddingTop: Constants.statusBarHeight,
-    flex: 1,
-  },
-});
 export default MessagesScreen;

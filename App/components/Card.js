@@ -6,7 +6,7 @@ function Card({ title, subTitle, image }) {
   return (
     <View style={styles.container}>
       <View style={styles.card}>
-        <Image style={styles.image} source={image} alt={image} />
+        <Image style={styles.image} source={image} alt="product" />
         <Text style={styles.title}>{title}</Text>
         <Text style={[styles.price]}>{subTitle}</Text>
       </View>

@@ -19,6 +19,9 @@ import WelcomeScreen from "./App/screens/WelcomeScreen";
 import ViewImageScreen from "./App/screens/ViewImageScreen";
 import Lessons from "./App/screens/Lessons";
 import ListingDetailsScreen from "./App/screens/ListingDetailsScreen";
+import MyAccountScreen from "./App/screens/MyAccountScreen";
+import MessagesScreen from "./App/screens/MessagesScreen";
+import ListingsScreen from "./App/screens/ListingsScreen";
 
 export default function App() {
   const orientation = useDeviceOrientation();
@@ -27,8 +30,11 @@ export default function App() {
     <View style={styles.container}>
       {/* <WelcomeScreen /> */}
       {/* <ViewImageScreen /> */}
-      {/* <Lessons /> */}
-      <ListingDetailsScreen />
+      <Lessons />
+      {/* <ListingDetailsScreen /> */}
+      {/* <MyAccountScreen /> */}
+      {/* <MessagesScreen /> */}
+      {/* <ListingsScreen /> */}
     </View>
   );
 }
