@@ -22,6 +22,7 @@ import ListingDetailsScreen from "./App/screens/ListingDetailsScreen";
 import MyAccountScreen from "./App/screens/MyAccountScreen";
 import MessagesScreen from "./App/screens/MessagesScreen";
 import ListingsScreen from "./App/screens/ListingsScreen";
+import LoginScreen from "./App/screens/LoginScreen";
 
 export default function App() {
   const orientation = useDeviceOrientation();
@@ -30,11 +31,12 @@ export default function App() {
     <View style={styles.container}>
       {/* <WelcomeScreen /> */}
       {/* <ViewImageScreen /> */}
-      <Lessons />
+      {/* <Lessons /> */}
       {/* <ListingDetailsScreen /> */}
       {/* <MyAccountScreen /> */}
       {/* <MessagesScreen /> */}
       {/* <ListingsScreen /> */}
+      <LoginScreen />
     </View>
   );
 }

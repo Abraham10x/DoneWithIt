@@ -7,4 +7,6 @@ export default {
   danger: "#ff5252",
   dark: "#0c0c0c",
   yellow: "#ffe66d",
+  lightGray: "#B2BEB5",
+  platinum: "#E5E4E2",
 };

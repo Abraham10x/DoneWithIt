@@ -1,22 +1,30 @@
 import React from "react";
-import { Button, Platform, StyleSheet } from "react-native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import colors from "../config/colors";
 
-function AppButton(props) {
-  return <Button title={props.title} style={styles.button} />;
+function AppButton({ title, onPress }) {
+  return (
+    <TouchableOpacity onPress={onPress} style={styles.button}>
+      <Text style={styles.text}>{title}</Text>
+    </TouchableOpacity>
+  );
 }
 
 const styles = StyleSheet.create({
   button: {
-    color: colors.white,
+    borderRadius: 25,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 11,
     width: "100%",
-    height: "100%",
+    backgroundColor: colors.primary,
+    marginTop: 20,
+  },
+  text: {
+    color: colors.white,
     fontSize: 18,
-    ...Platform.select({
-      android: {
-        backgroundColor: props.color,
-      },
-    }),
+    textTransform: "uppercase",
+    fontWeight: "bold",
   },
 });
 
