@@ -23,6 +23,7 @@ import MyAccountScreen from "./App/screens/MyAccountScreen";
 import MessagesScreen from "./App/screens/MessagesScreen";
 import ListingsScreen from "./App/screens/ListingsScreen";
 import LoginScreen from "./App/screens/LoginScreen";
+import RegisterScreen from "./App/screens/RegisterScreen";
 
 export default function App() {
   const orientation = useDeviceOrientation();
@@ -36,7 +37,8 @@ export default function App() {
       {/* <MyAccountScreen /> */}
       {/* <MessagesScreen /> */}
       {/* <ListingsScreen /> */}
-      <LoginScreen />
+      {/* <LoginScreen /> */}
+      <RegisterScreen />
     </View>
   );
 }
