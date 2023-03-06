@@ -28,9 +28,12 @@ function AppPicker({ icon, items, onSelect, placeholder, selectItem }) {
               style={styles.icon}
             />
           )}
-          <AppText style={styles.text}>
-            {selectItem ? selectItem.label : placeholder}
-          </AppText>
+          {selectItem ? (
+            <AppText style={styles.text}>{selectItem.label}</AppText>
+          ) : (
+            <AppText style={styles.placeholder}>{placeholder}</AppText>
+          )}
+          <AppText style={styles.text}></AppText>
           <MaterialCommunityIcons
             name="chevron-down"
             size={30}
@@ -63,17 +66,28 @@ function AppPicker({ icon, items, onSelect, placeholder, selectItem }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.medium,
-    borderRadius: 15,
+    borderRadius: 25,
     flexDirection: "row",
     width: "100%",
-    padding: 15,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
     marginVertical: 10,
   },
   icon: {
     marginRight: 10,
   },
+  placeholder: {
+    flex: 1,
+    color: colors.medium,
+    fontSize: 18,
+    justifyContent: "center",
+  },
   text: {
     flex: 1,
+    color: colors.dark,
+    fontSize: 18,
+    justifyContent: "center",
+    fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
   },
 });
 

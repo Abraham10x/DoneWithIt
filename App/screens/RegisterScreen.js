@@ -22,13 +22,13 @@ function RegisterScreen() {
         validationSchema={validationSchema}
       >
         <AppFormField
-          autoCapitalize
+          autoCapitalize={true}
           autoCorrect={false}
           icon="account"
           name="name"
           keyboardType="default"
           placeholder="Name"
-          textContentType="text"
+          textContentType="name"
         />
         <AppFormField
           autoCapitalize="none"
