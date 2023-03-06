@@ -3,11 +3,12 @@ import { useFormikContext } from "formik";
 import AppPicker from "../AppPicker";
 import ErrorMessage from "./ErrorMessage";
 
-function AppFormPicker({ icon, items, placeholder, name }) {
+function AppFormPicker({ icon, items, placeholder, style, name }) {
   const { setFieldValue, touched, errors, values } = useFormikContext();
   return (
     <>
       <AppPicker
+        style={style}
         icon={icon}
         items={items}
         onSelect={(item) => setFieldValue(name, item)}

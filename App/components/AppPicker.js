@@ -14,12 +14,12 @@ import AppText from "./AppText";
 import Screen from "./Screen";
 import PickerItem from "./PickerItem";
 
-function AppPicker({ icon, items, onSelect, placeholder, selectItem }) {
+function AppPicker({ icon, items, onSelect, placeholder, style, selectItem }) {
   const [visibleModal, setVisibleModal] = useState(false);
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setVisibleModal(true)}>
-        <View style={styles.container}>
+        <View style={[styles.container, style]}>
           {icon && (
             <MaterialCommunityIcons
               name={icon}
@@ -37,7 +37,7 @@ function AppPicker({ icon, items, onSelect, placeholder, selectItem }) {
           <MaterialCommunityIcons
             name="chevron-down"
             size={30}
-            color={colors.dark}
+            color={colors.lightGray}
           />
         </View>
       </TouchableWithoutFeedback>
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   placeholder: {
     flex: 1,
-    color: colors.medium,
+    color: colors.lightGray,
     fontSize: 18,
     justifyContent: "center",
   },

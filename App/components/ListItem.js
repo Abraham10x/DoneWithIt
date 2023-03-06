@@ -4,20 +4,42 @@ import {
   GestureHandlerRootView,
   Swipeable,
 } from "react-native-gesture-handler";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AppText from "./AppText";
 import colors from "../config/colors";
 
-function ListItem({ image, title, subTitle, onPress, renderRightActions }) {
+function ListItem({
+  image,
+  title,
+  subTitle,
+  onPress,
+  renderRightActions,
+  showChevrons,
+}) {
   return (
     <GestureHandlerRootView>
       <Swipeable renderRightActions={renderRightActions}>
-        <TouchableHighlight underlayColor={colors.medium} onPress={onPress}>
+        <TouchableHighlight
+          style={styles.Maincontainer}
+          underlayColor={colors.medium}
+          onPress={onPress}
+        >
           <View style={styles.container}>
-            <Image style={styles.image} source={image} alt="profile" />
-            <View style={styles.textContainer}>
-              <AppText>{title}</AppText>
-              <AppText>{subTitle}</AppText>
+            <View style={styles.contain}>
+              <Image style={styles.image} source={image} alt="profile" />
+              <View style={styles.textContainer}>
+                <AppText numberOfLines={1}>{title}</AppText>
+                {subTitle && <AppText numberOfLines={1}>{subTitle}</AppText>}
+              </View>
             </View>
+            {showChevrons === true && (
+              <MaterialCommunityIcons
+                name="chevron-right"
+                size={30}
+                style={styles.chevron}
+                color={colors.lightGray}
+              />
+            )}
           </View>
         </TouchableHighlight>
       </Swipeable>
@@ -26,10 +48,16 @@ function ListItem({ image, title, subTitle, onPress, renderRightActions }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  contain: {
+    flex: 1,
     flexDirection: "row",
     marginVertical: 4,
     padding: 15,
+  },
+  container: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    flex: 1,
   },
   image: {
     width: 70,
@@ -39,6 +67,10 @@ const styles = StyleSheet.create({
   textContainer: {
     marginVertical: 10,
     marginLeft: 8,
+  },
+  chevron: {
+    justifyContent: "center",
+    alignSelf: "center",
   },
 });
 export default ListItem;

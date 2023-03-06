@@ -22,7 +22,6 @@ const category = [
 ];
 
 function ListingEditScreen() {
-  const [selectItem, setSelectedItem] = useState(category[0]);
   return (
     <Screen style={styles.screen}>
       <AppForm
@@ -49,8 +48,13 @@ function ListingEditScreen() {
           name="price"
           keyboardType="numeric"
           placeholder="Price"
+          style={{ width: "40%" }}
         />
-        <AppFormPicker placeholder="Category" items={category} />
+        <AppFormPicker
+          style={{ width: "60%" }}
+          placeholder="Category"
+          items={category}
+        />
         <AppFormField
           multiline
           numberOfLine={3}
