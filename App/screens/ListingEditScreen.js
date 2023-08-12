@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
 import Screen from "../components/Screen";
-import AppForm from "../components/form/AppForm";
-import AppFormField from "../components/form/AppFormField";
-import SubmitButton from "../components/form/SubmitButton";
 import colors from "../config/colors";
-import AppFormPicker from "../components/form/AppFormPicker";
+import {AppForm, FormField as FormField, AppFormPicker as Picker, SubmitButton } from "../components/form"
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
@@ -34,7 +31,7 @@ function ListingEditScreen() {
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        <AppFormField
+        <FormField
           maxLength={255}
           autoCapitalize="words"
           autoCorrect={false}
@@ -43,19 +40,19 @@ function ListingEditScreen() {
           placeholder="Title"
           textContentType="name"
         />
-        <AppFormField
+        <FormField
           maxLength={255}
           name="price"
           keyboardType="numeric"
           placeholder="Price"
           style={{ width: "40%" }}
         />
-        <AppFormPicker
+        <Picker
           style={{ width: "60%" }}
           placeholder="Category"
           items={category}
         />
-        <AppFormField
+        <FormField
           multiline
           numberOfLine={3}
           autoCapitalize="sentences"
