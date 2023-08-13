@@ -20,7 +20,6 @@ function ListItem({
     <GestureHandlerRootView>
       <Swipeable renderRightActions={renderRightActions}>
         <TouchableHighlight
-          style={styles.Maincontainer}
           underlayColor={colors.medium}
           onPress={onPress}
         >
@@ -29,7 +28,7 @@ function ListItem({
               <Image style={styles.image} source={image} alt="profile" />
               <View style={styles.textContainer}>
                 <AppText numberOfLines={1}>{title}</AppText>
-                {subTitle && <AppText numberOfLines={1}>{subTitle}</AppText>}
+                {subTitle && <AppText numberOfLines={2}>{subTitle}</AppText>}
               </View>
             </View>
             {showChevrons === true && (

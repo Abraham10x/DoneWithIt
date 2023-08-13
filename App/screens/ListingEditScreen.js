@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
-import {AppForm, FormField as FormField, AppFormPicker as Picker, SubmitButton } from "../components/form"
+import {AppForm, AppFormField as FormField, AppFormPicker as Picker, SubmitButton } from "../components/form"
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
@@ -45,10 +45,10 @@ function ListingEditScreen() {
           name="price"
           keyboardType="numeric"
           placeholder="Price"
-          style={{ width: "40%" }}
+          width="40%"
         />
         <Picker
-          style={{ width: "60%" }}
+          width="60%"
           placeholder="Category"
           items={category}
         />
