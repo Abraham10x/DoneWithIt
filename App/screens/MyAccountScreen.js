@@ -7,19 +7,18 @@ import AppText from "../components/AppText";
 import AppHeader from "../components/AppHeader";
 import AccountItem from "../components/AccountItem";
 import ListItemSeparator from "../components/ListItemSeparator";
+import Icon from "../components/Icon";
 
 const pages = [
   {
     id: 1,
-    icon: "format-list-bulleted",
     title: "My Listings",
-    color: { backgroundColor: colors.primary },
+    icon: { name: "format-list-bulleted", backgroundColor: colors.primary },
   },
   {
     id: 2,
-    icon: "email",
     title: "My Messages",
-    color: { backgroundColor: colors.secondary },
+    icon: { name: "email", backgroundColor: colors.secondary },
   },
 ];
 
@@ -43,10 +42,9 @@ function MyAccountScreen() {
           data={pages}
           keyExtractor={(pages) => pages.id.toString()}
           renderItem={({ item }) => (
-            <AccountItem
-              icon={item.icon}
+            <AccountItem    
               title={item.title}
-              style={item.color}
+              IconComponent={<Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor}/>}
               onPress={() => console.log("hello", item)}
             />
           )}
@@ -55,8 +53,7 @@ function MyAccountScreen() {
       </View>
       <View style={styles.logOut}>
         <AccountItem
-          icon={"logout"}
-          style={{ backgroundColor: colors.yellow }}
+          IconComponent={<Icon name={"logout"} backgroundColor={colors.yellow}/>}
           title={"Log Out"}
         />
       </View>

@@ -14,7 +14,7 @@ import AppText from "./AppText";
 import Screen from "./Screen";
 import PickerItem from "./PickerItem";
 
-function AppPicker({ icon, items, onSelect, placeholder, style, selectItem, width = "100%" }) {
+function AppPicker({ icon, items, numberOfColumns = 1, onSelect, placeholder, PickerItemComponent = PickerItem, style, selectItem, width = "100%" }) {
   const [visibleModal, setVisibleModal] = useState(false);
   return (
     <>
@@ -46,10 +46,11 @@ function AppPicker({ icon, items, onSelect, placeholder, style, selectItem, widt
           <Button title="Close" onPress={() => setVisibleModal(false)} />
           <FlatList
             data={items}
+            numColumns={numberOfColumns}
             keyExtractor={(item) => item.value.toString()}
             renderItem={({ item }) => (
-              <PickerItem
-                label={item.label}
+              <PickerItemComponent
+                item={item}
                 onPress={() => {
                   setVisibleModal(false);
                   onSelect(item);

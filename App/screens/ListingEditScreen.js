@@ -3,7 +3,13 @@ import { StyleSheet } from "react-native";
 import * as Yup from "yup";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
-import {AppForm, AppFormField as FormField, AppFormPicker as Picker, SubmitButton } from "../components/form"
+import {
+  AppForm,
+  AppFormField as FormField,
+  AppFormPicker as Picker,
+  SubmitButton,
+} from "../components/form";
+import CategoryPickerItem from "../components/CategoryPickerItem";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
@@ -13,9 +19,30 @@ const validationSchema = Yup.object().shape({
 });
 
 const category = [
-  { label: "Furniture", value: 1 },
-  { label: "Clothing", value: 2 },
-  { label: "Cameras", value: 3 },
+  {
+    label: "Furniture",
+    value: 1,
+    backgroundColor: "#fc5c65",
+    icon: "floor-lamp",
+  },
+  { label: "Cars", value: 2, backgroundColor: "#fd9644", icon: "car" },
+  { label: "Cameras", value: 3, backgroundColor: "#fed330", icon: "camera" },
+  { label: "Games", value: 4, backgroundColor: "#26de81", icon: "cards" },
+  {
+    label: "Clothing",
+    value: 5,
+    backgroundColor: "#2bcbba",
+    icon: "shoe-heel",
+  },
+  { label: "Sports", value: 6, backgroundColor: "#4baaf2", icon: "basketball" },
+  {
+    label: "Movies & Music",
+    value: 7,
+    backgroundColor: "#4b7bec",
+    icon: "headphones",
+  },
+  { label: "Books", value: 8, backgroundColor: "purple", icon: "book" },
+  { label: "Others", value: 9, backgroundColor: "grey", icon: "card" },
 ];
 
 function ListingEditScreen() {
@@ -48,8 +75,10 @@ function ListingEditScreen() {
           width="40%"
         />
         <Picker
+          numberOfColumns={3}
           width="60%"
           placeholder="Category"
+          PickerItemComponent={CategoryPickerItem}
           items={category}
         />
         <FormField
