@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -10,6 +11,7 @@ import {
   Platform,
   StatusBar,
 } from "react-native";
+// import * as Permissions from "expo-permissions";
 
 import {
   useDimensions,
@@ -25,10 +27,13 @@ import ListingsScreen from "./App/screens/ListingsScreen";
 import LoginScreen from "./App/screens/LoginScreen";
 import RegisterScreen from "./App/screens/RegisterScreen";
 import ListingEditScreen from "./App/screens/ListingEditScreen";
+import ImageInput from "./App/components/ImageInput";
+import ImageInputList from "./App/components/ImageInputList";
 
 export default function App() {
   const orientation = useDeviceOrientation();
   console.log(useDimensions);
+
   return (
     <View style={styles.container}>
       {/* <WelcomeScreen /> */}
