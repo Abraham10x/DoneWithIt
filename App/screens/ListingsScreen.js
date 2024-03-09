@@ -2,6 +2,7 @@ import React from "react";
 import Screen from "../components/Screen";
 import { FlatList, StyleSheet } from "react-native";
 import Card from "../components/Card";
+import routes from "../navigation/routes";
 import { View } from "react-native";
 
 const products = [
@@ -19,7 +20,7 @@ const products = [
   },
 ];
 
-function ListingsScreen() {
+function ListingsScreen({ navigation }) {
   return (
     <Screen>
       <View style={styles.container}>
@@ -31,6 +32,7 @@ function ListingsScreen() {
               image={item.image}
               title={item.title}
               subTitle={item.subtitle}
+              onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
             />
           )}
           // ItemSeparatorComponent={() => <View style={styles.separator} />}

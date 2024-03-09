@@ -9,8 +9,9 @@ import {
   View,
 } from "react-native";
 import colors from "../config/colors";
+import routes from "../navigation/routes";
 
-export default function WelcomeScreen() {
+export default function WelcomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -27,12 +28,21 @@ export default function WelcomeScreen() {
           <Text style={styles.tagline}>Sell What You Don't Need</Text>
         </View>
         <View style={styles.buttonContainer}>
-          <Pressable style={styles.loginButton}>
+          <Button
+            title="Login"
+            onPress={() => navigation.navigate(routes.LOGIN)}
+          />
+          <Button
+            title="Register"
+            color="secondary"
+            onPress={() => navigation.navigate(routes.REGISTER)}
+          />
+          {/* <Pressable style={styles.loginButton}>
             <Text style={styles.ButtonText}>Login</Text>
           </Pressable>
           <Pressable style={styles.registerButton}>
             <Text style={styles.ButtonText}>Register</Text>
-          </Pressable>
+          </Pressable> */}
         </View>
       </ImageBackground>
     </View>

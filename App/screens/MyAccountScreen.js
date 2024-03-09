@@ -8,6 +8,7 @@ import AppHeader from "../components/AppHeader";
 import AccountItem from "../components/AccountItem";
 import ListItemSeparator from "../components/ListItemSeparator";
 import Icon from "../components/Icon";
+import routes from "../navigation/routes";
 
 const pages = [
   {
@@ -19,10 +20,11 @@ const pages = [
     id: 2,
     title: "My Messages",
     icon: { name: "email", backgroundColor: colors.secondary },
+    targetScreen: routes.MESSAGES,
   },
 ];
 
-function MyAccountScreen() {
+function MyAccountScreen({ navigation }) {
   return (
     <Screen>
       <View style={styles.container}>
@@ -42,10 +44,15 @@ function MyAccountScreen() {
           data={pages}
           keyExtractor={(pages) => pages.id.toString()}
           renderItem={({ item }) => (
-            <AccountItem    
+            <AccountItem
               title={item.title}
-              IconComponent={<Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor}/>}
-              onPress={() => console.log("hello", item)}
+              IconComponent={
+                <Icon
+                  name={item.icon.name}
+                  backgroundColor={item.icon.backgroundColor}
+                />
+              }
+              onPress={() => navigation.navigate(item.targetScreen)}
             />
           )}
           ItemSeparatorComponent={ListItemSeparator}
@@ -53,7 +60,9 @@ function MyAccountScreen() {
       </View>
       <View style={styles.logOut}>
         <AccountItem
-          IconComponent={<Icon name={"logout"} backgroundColor={colors.yellow}/>}
+          IconComponent={
+            <Icon name={"logout"} backgroundColor={colors.yellow} />
+          }
           title={"Log Out"}
         />
       </View>

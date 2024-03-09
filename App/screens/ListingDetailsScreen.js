@@ -1,16 +1,18 @@
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
-function ListingDetailsScreen() {
+
+function ListingDetailsScreen({ route }) {
+  const listing = route.params;
   return (
     <View style={styles.container}>
       <View style={styles.card}>
         <Image
           style={styles.image}
-          source={require("../assets/jacket.jpg")}
-          alt="jacket"
+          source={listing.image}
+          alt={listing.title}
         />
-        <Text style={styles.title}>Red jacket for sale!</Text>
-        <Text style={styles.price}>$100</Text>
+        <Text style={styles.title}>{listing.title}</Text>
+        <Text style={styles.price}>{listing.price}</Text>
       </View>
       <View style={styles.user}>
         <Image
