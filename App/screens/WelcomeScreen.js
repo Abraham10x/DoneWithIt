@@ -28,7 +28,7 @@ export default function WelcomeScreen({ navigation }) {
           <Text style={styles.tagline}>Sell What You Don't Need</Text>
         </View>
         <View style={styles.buttonContainer}>
-          <Button
+          {/* <Button
             title="Login"
             onPress={() => navigation.navigate(routes.LOGIN)}
           />
@@ -36,13 +36,19 @@ export default function WelcomeScreen({ navigation }) {
             title="Register"
             color="secondary"
             onPress={() => navigation.navigate(routes.REGISTER)}
-          />
-          {/* <Pressable style={styles.loginButton}>
+          /> */}
+          <Pressable
+            style={styles.loginButton}
+            onPress={() => navigation.navigate(routes.LOGIN)}
+          >
             <Text style={styles.ButtonText}>Login</Text>
           </Pressable>
-          <Pressable style={styles.registerButton}>
+          <Pressable
+            style={styles.registerButton}
+            onPress={() => navigation.navigate(routes.REGISTER)}
+          >
             <Text style={styles.ButtonText}>Register</Text>
-          </Pressable> */}
+          </Pressable>
         </View>
       </ImageBackground>
     </View>

@@ -7,10 +7,12 @@ import routes from "../navigation/routes";
 const Stack = createStackNavigator();
 
 const AccountNavigator = () => {
-  <Stack.Navigator>
-    <Stack.Screen name={routes.ACCOUNT} component={MyAccountScreen} />
-    <Stack.Screen name={routes.MESSAGES} component={MessagesScreen} />
-  </Stack.Navigator>;
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name={routes.ACCOUNT} component={MyAccountScreen} />
+      <Stack.Screen name={routes.MESSAGES} component={MessagesScreen} />
+    </Stack.Navigator>
+  );
 };
 
 export default AccountNavigator;

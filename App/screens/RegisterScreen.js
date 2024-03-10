@@ -4,7 +4,7 @@ import * as Yup from "yup";
 
 import Screen from "../components/Screen";
 import colors from "../config/colors";
-import {AppForm, AppFormField, SubmitButton } from "../components/form"
+import { AppForm, AppFormField, SubmitButton } from "../components/form";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
@@ -21,7 +21,7 @@ function RegisterScreen() {
         validationSchema={validationSchema}
       >
         <AppFormField
-          autoCapitalize={true}
+          autoCapitalize="none"
           autoCorrect={false}
           icon="account"
           name="name"
